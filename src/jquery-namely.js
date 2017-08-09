@@ -1,5 +1,5 @@
 if (!jQuery) {
-    throw 'Namely cannot work if jQuery has not being loaded first.';
+    throw 'Namely cannot work if jQuery has not been loaded first.';
 }
 
 jQuery(function ($) {
