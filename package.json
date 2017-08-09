@@ -1,6 +1,6 @@
 {
   "name": "jquery-namely",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A jQuery by Name Selector Extension",
   "main": "src/jquery-namely.js",
   "scripts": {
