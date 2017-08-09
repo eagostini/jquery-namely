@@ -1,0 +1,36 @@
+{
+  "name": "jquery-namely",
+  "version": "1.0.0",
+  "description": "A jQuery by Name Selector Plugin",
+  "main": "index.js",
+  "scripts": {
+    "dev": "NODE_ENV=development webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "dist": "npm run dev && npm run production",
+    "watch": "NODE_ENV=development webpack --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "hot": "NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "production": "NODE_ENV=production webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eagostini/jquery-namely.git"
+  },
+  "keywords": [
+    "jquery",
+    "jquery-plugin",
+    "selector",
+    "name",
+    "@"
+  ],
+  "author": {
+    "name": "Eduardo Agostini",
+    "email": "edu.agostini@gmail.com"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eagostini/jquery-namely/issues"
+  },
+  "homepage": "https://github.com/eagostini/jquery-namely#readme",
+  "devDependencies": {
+    "laravel-mix": "^1.4.2"
+  }
+}
