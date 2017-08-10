@@ -1,22 +1,31 @@
-if (!jQuery) {
-    throw 'Namely cannot work if jQuery has not been loaded first.';
-}
+(exports => {
+    if (module && module.exports) {
+        module.exports = exports;
+    } else {
+        return exports(window && window.jQuery);
+    }
+})(jQuery => {
+    if (!jQuery) {
+        throw 'Namely cannot work if jQuery has not been loaded first.';
+    }
 
-jQuery(function ($) {
+    const expr = jQuery.expr;
     const identifier = '(?:\\\\.|[\\w-]|[^\0-\\xa0])+';
     const key = 'NAME';
 
-    $.expr.match[key] = new RegExp('^@(' + identifier + '(\\[(' + identifier + ')?\\])*)');
+    expr.match[key] = new RegExp(`^@(${ identifier }(\\[(${ identifier })?\\])*)`);
 
-    $.expr.filter[key] = function (name) {
-        return function (element) {
+    expr.filter[key] = name => {
+        return element => {
             return element.getAttribute('name') === name;
         };
     };
 
-    $.expr.find[key] = function (name, context) {
+    expr.find[key] = (name, context) => {
         if (context.getElementsByName) {
             return context.getElementsByName(name);
         }
     };
+
+    return jQuery;
 });

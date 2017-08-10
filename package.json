@@ -5,10 +5,11 @@
   "main": "src/jquery-namely.js",
   "scripts": {
     "dev": "NODE_ENV=development webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "dist": "npm run dev && npm run production",
+    "dist": "npm install && npm test && npm run dev && npm run production",
     "watch": "NODE_ENV=development webpack --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "hot": "NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "production": "NODE_ENV=production webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+    "production": "NODE_ENV=production webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "test": "nyc ava --verbose"
   },
   "repository": {
     "type": "git",
@@ -18,8 +19,8 @@
     "jquery",
     "jquery-plugin",
     "selector",
-    "name",
-    "@"
+    "at",
+    "name"
   ],
   "author": {
     "name": "Eduardo Agostini",
@@ -31,6 +32,10 @@
   },
   "homepage": "https://github.com/eagostini/jquery-namely#readme",
   "devDependencies": {
-    "laravel-mix": "^1.4.2"
+    "ava": "^0.21.0",
+    "jquery": "^3.2.1",
+    "jsdom": "^11.1.0",
+    "laravel-mix": "^1.4.2",
+    "nyc": "^11.1.0"
   }
 }
