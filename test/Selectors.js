@@ -3,27 +3,64 @@ const {
     jQuery: $
 } = new (require('./helpers/bundle.js'));
 
-let body = $('body');
-let length = (query, context) => {
-    return (context ? context.find(query) : $(query)).length;
+let context = $('form');
+let length = (query, element) => {
+    return (element ? element.find(query) : $(query)).length;
 };
 
-test('Element does not exist in DOM.', t => {
+const message = {
+    group: {
+        array: `Array grouped element wasn't found.`,
+        object: `Object grouped element wasn't found.`
+    },
+    prefix: 'Checking shorthand for an element',
+    found: 'found in DOM by its'
+};
+
+test(`${ message.prefix } that does not exist in DOM.`, t => {
     t.falsy(length('@address'));
 });
 
-test('Element found in DOM by its name only.', t => {
+test(`${ message.prefix } that does not exist in DOM in a given context.`, t => {
+    t.falsy(length('@address', context));
+});
+
+test(`${ message.prefix } ${ message.found } name only.`, t => {
     t.truthy(length('@name'));
 });
 
-test('Element found in DOM by its name only in a given context.', t => {
-    t.truthy(length('@name', body));
+test(`${ message.prefix } ${ message.found } name only in a given context.`, t => {
+    t.truthy(length('@name', context));
 });
 
-test('Element found in DOM by its tag and name.', t => {
+test(`${ message.prefix } ${ message.found } tag and name.`, t => {
     t.truthy(length('input@name'));
 });
 
-test('Element found in DOM by its tag and name in a given context.', t => {
-    t.truthy(length('input@name', body));
+test(`${ message.prefix } ${ message.found } tag and name in a given context.`, t => {
+    t.truthy(length('input@name', context));
+});
+
+test(`${ message.prefix } ${ message.found } name only when grouped.`, t => {
+    t.truthy(length('@preferences[agreement]'), message.group.object);
+    t.truthy(length('@skills[]'), message.group.array);
+});
+
+test(`${ message.prefix } ${ message.found } name only in a given context when grouped.`, t => {
+    t.truthy(length('@preferences[agreement]', context), message.group.object);
+    t.truthy(length('@skills[]', context), message.group.array);
+});
+
+test(`${ message.prefix } ${ message.found } tag and name when grouped.`, t => {
+    t.truthy(length('input@preferences[agreement]'), message.group.object);
+    t.truthy(length('select@skills[]'), message.group.array);
+});
+
+test(`${ message.prefix } ${ message.found } tag and name in a given context when grouped.`, t => {
+    t.truthy(length('input@preferences[agreement]', context), message.group.object);
+    t.truthy(length('select@skills[]', context), message.group.array);
+});
+
+test(`Checking shorthand for a sensitivity case.`, t => {
+    t.falsy(length('@Name'));
 });

@@ -1,0 +1,27 @@
+<form>
+    <label>
+        <span>Name:</span>
+        <br />
+        <input name="name" type="text" />
+    </label>
+
+    <label>
+        <span>Skills:</span>
+        <br />
+        <select multiple name="skills[]">
+            <option disabled="disabled" hidden="hidden" selected="selected" value="">Select...</option>
+            <option value="js">JavaScript</option>
+            <option value="node">Node JS</option>
+            <option value="php">PHP</option>
+        </select>
+    </label>
+
+    <label>
+        <input name="preferences[newsletter]" type="checkbox" />
+        <span>I want to receive Namely newsletter.</span>
+    </label>
+    <label>
+        <input name="preferences[agreement]" type="checkbox" />
+        <span>I agree with whatever might be.</span>
+    </label>
+</form>

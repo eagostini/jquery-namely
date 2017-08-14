@@ -1,12 +1,8 @@
 (exports => {
-    if (typeof module !== 'object') {
-        let module = {};
-    }
-
-    module.exports = exports;
-
-    if (typeof window === 'object') {
-        return module.exports(window.jQuery);
+    if (typeof window === 'undefined') {
+        module.exports = exports;
+    } else {
+        return exports(window.jQuery);
     }
 })(jQuery => {
     if (!jQuery) {

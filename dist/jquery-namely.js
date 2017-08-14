@@ -1,14 +1,8 @@
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 (function (exports) {
-    if ((typeof module === 'undefined' ? 'undefined' : _typeof(module)) !== 'object') {
-        var _module = {};
-    }
-
-    module.exports = exports;
-
-    if ((typeof window === 'undefined' ? 'undefined' : _typeof(window)) === 'object') {
-        return module.exports(window.jQuery);
+    if (typeof window === 'undefined') {
+        module.exports = exports;
+    } else {
+        return exports(window.jQuery);
     }
 })(function (jQuery) {
     if (!jQuery) {
